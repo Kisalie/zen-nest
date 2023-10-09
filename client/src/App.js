@@ -1,18 +1,35 @@
 import { useEffect } from 'react'
+import { login, register, logout } from './lib/auth'
 import axios from 'axios'
 
 export default function App() {
   useEffect(() => {
-    async function getData(){
+    async function fetchSessions() {
       try {
-        const { data } = await axios.get('/api/products/') // <---- Replace with your endpoint to test the proxy
-        console.log(data)
+        const { data } = await axios.get('/api/meditation-sessions/')
+        console.log('Sessions data:', data)
       } catch (error) {
-        console.log(error.response.data)
+        console.log('Error fetching sessions:', error.response ? error.response.data : error.message)
       }
     }
-    getData()
+
+    fetchSessions()
   }, [])
 
-  return <h1>Hello World</h1>
+  return (
+    <>
+      <button
+        onClick={() => login(
+          'kisalie',
+          'pass'
+        )}
+      >Login </button>
+      <button onClick={() => register(
+        'kisalie12312312',
+        'pass',
+        'pass'
+      )}>Register</button>
+      <button onClick={logout}>Logout</button>
+    </>
+  )
 }

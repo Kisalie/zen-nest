@@ -1,8 +1,8 @@
 from rest_framework import serializers
-from models import Meditation_Session
+from ..models import MeditationSession
 
 
 class MeditationSessionSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Meditation_Session
+        model = MeditationSession
         fields = '__all__'

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Meditation_Session
+from .models import MeditationSession
 
 # Register your models here.
-admin.site.register(Meditation_Session)
+admin.site.register(MeditationSession)
