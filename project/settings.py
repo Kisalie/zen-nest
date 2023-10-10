@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+import datetime
 from pathlib import Path
 import environ
 
@@ -19,9 +20,6 @@ environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-# TODO - 1. Update the SECRET_KEY?
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -46,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'meditation_sessions',
+    'guided_meditations',
     'sounds',
     'users'
 ]
@@ -55,6 +54,12 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
 }
+
+SIMPLE_JWT = {
+    # Token expires in 3 hour
+    'ACCESS_TOKEN_LIFETIME': datetime.timedelta(hours=3),
+}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

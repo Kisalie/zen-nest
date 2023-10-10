@@ -1,0 +1,402 @@
+[
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 1,
+    "fields": {
+      "intensity": "high",
+      "sound": 1
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 2,
+    "fields": {
+      "intensity": "medium",
+      "sound": 2
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 3,
+    "fields": {
+      "intensity": "low",
+      "sound": 3
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 4,
+    "fields": {
+      "intensity": "medium",
+      "sound": 4
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 5,
+    "fields": {
+      "intensity": "high",
+      "sound": 5
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 6,
+    "fields": {
+      "intensity": "low",
+      "sound": 6
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 7,
+    "fields": {
+      "intensity": "medium",
+      "sound": 7
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 8,
+    "fields": {
+      "intensity": "low",
+      "sound": 8
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 9,
+    "fields": {
+      "intensity": "medium",
+      "sound": 9
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 10,
+    "fields": {
+      "intensity": "low",
+      "sound": 10
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 11,
+    "fields": {
+      "intensity": "low",
+      "sound": 11
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 12,
+    "fields": {
+      "intensity": "medium",
+      "sound": 12
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 13,
+    "fields": {
+      "intensity": "medium",
+      "sound": 13
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 14,
+    "fields": {
+      "intensity": "medium",
+      "sound": 14
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 15,
+    "fields": {
+      "intensity": "high",
+      "sound": 15
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 16,
+    "fields": {
+      "intensity": "high",
+      "sound": 16
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 17,
+    "fields": {
+      "intensity": "low",
+      "sound": 17
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 18,
+    "fields": {
+      "intensity": "low",
+      "sound": 18
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 19,
+    "fields": {
+      "intensity": "medium",
+      "sound": 19
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 20,
+    "fields": {
+      "intensity": "high",
+      "sound": 20
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 21,
+    "fields": {
+      "intensity": "medium",
+      "sound": 21
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 22,
+    "fields": {
+      "intensity": "low",
+      "sound": 22
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 23,
+    "fields": {
+      "intensity": "medium",
+      "sound": 23
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 24,
+    "fields": {
+      "intensity": "high",
+      "sound": 24
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 25,
+    "fields": {
+      "intensity": "medium",
+      "sound": 25
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 26,
+    "fields": {
+      "intensity": "low",
+      "sound": 26
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 27,
+    "fields": {
+      "intensity": "high",
+      "sound": 27
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 28,
+    "fields": {
+      "intensity": "high",
+      "sound": 28
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 29,
+    "fields": {
+      "intensity": "medium",
+      "sound": 29
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 30,
+    "fields": {
+      "intensity": "low",
+      "sound": 30
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 31,
+    "fields": {
+      "intensity": "high",
+      "sound": 31
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 32,
+    "fields": {
+      "intensity": "high",
+      "sound": 32
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 33,
+    "fields": {
+      "intensity": "low",
+      "sound": 33
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 34,
+    "fields": {
+      "intensity": "high",
+      "sound": 34
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 35,
+    "fields": {
+      "intensity": "low",
+      "sound": 35
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 36,
+    "fields": {
+      "intensity": "high",
+      "sound": 36
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 37,
+    "fields": {
+      "intensity": "medium",
+      "sound": 37
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 38,
+    "fields": {
+      "intensity": "high",
+      "sound": 38
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 39,
+    "fields": {
+      "intensity": "low",
+      "sound": 39
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 40,
+    "fields": {
+      "intensity": "low",
+      "sound": 40
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 41,
+    "fields": {
+      "intensity": "low",
+      "sound": 41
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 42,
+    "fields": {
+      "intensity": "medium",
+      "sound": 42
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 43,
+    "fields": {
+      "intensity": "medium",
+      "sound": 43
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 44,
+    "fields": {
+      "intensity": "low",
+      "sound": 44
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 45,
+    "fields": {
+      "intensity": "medium",
+      "sound": 45
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 46,
+    "fields": {
+      "intensity": "low",
+      "sound": 46
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 47,
+    "fields": {
+      "intensity": "low",
+      "sound": 47
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 48,
+    "fields": {
+      "intensity": "low",
+      "sound": 48
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 49,
+    "fields": {
+      "intensity": "high",
+      "sound": 49
+    }
+  },
+  {
+    "model": "guided_meditations.GuidedMeditation",
+    "pk": 50,
+    "fields": {
+      "intensity": "low",
+      "sound": 50
+    }
+  }
+]

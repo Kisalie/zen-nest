@@ -54,14 +54,11 @@ def convert_files_to_seed_data(meditation_files, ambient_files, meditation_direc
         sound_seed_data.append(sound_entry)
 
         guided_meditation_entry = {
-            # Change 'guidedmeditationmodel' to your actual model name in the 'guidedmeditations' app
-            # TODO - Fix this:
-            'model': 'guidedmeditations.guidedmeditationmodel',
+            'model': 'guided_meditations.GuidedMeditation',
             'pk': current_id,
             'fields': {
                 'intensity': intensity,
-                'sound_ID': current_id,
-                'image_url': None,  # Placeholder
+                'sound': current_id,
             }
         }
         guided_meditation_seed_data.append(guided_meditation_entry)
@@ -97,7 +94,7 @@ def convert_files_to_seed_data(meditation_files, ambient_files, meditation_direc
     with open('sounds/seed.json', 'w') as outfile:
         json.dump(sound_seed_data, outfile)
 
-    with open('guided_meditation_seed.json', 'w') as outfile:
+    with open('guided_meditations/seed.json', 'w') as outfile:
         json.dump(guided_meditation_seed_data, outfile)
 
     return sound_seed_data, guided_meditation_seed_data
