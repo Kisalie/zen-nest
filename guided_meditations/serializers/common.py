@@ -3,7 +3,7 @@ from ..models import GuidedMeditation
 from sounds.serializers.common import SoundSerializer
 
 
-class SoundSerializer(serializers.ModelSerializer):
+class GuidedMeditationSerializer(serializers.ModelSerializer):
     sound = SoundSerializer()
 
     class Meta:
