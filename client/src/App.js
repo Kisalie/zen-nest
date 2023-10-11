@@ -17,7 +17,11 @@ export default function App() {
   }, [])
 
   return (
-    <>
+    <main className='bg-sky-200 h-screen'>
+
+      <h1 className="text-4xl font-extrabold">
+        Hello world!
+      </h1>
       <button
         onClick={() => login(
           'kisalie',
@@ -29,7 +33,8 @@ export default function App() {
         'pass',
         'pass'
       )}>Register</button>
+
       <button onClick={logout}>Logout</button>
-    </>
+    </main>
   )
 }
