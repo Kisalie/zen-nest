@@ -25,9 +25,8 @@ def convert_files_to_seed_data(meditation_files, ambient_files, meditation_direc
     # Start ID from 1
     current_id = 1
 
-    # First, process the meditation sounds
     for file in meditation_files:
-        # Assuming file names are in the format "meditation_{short/long}_{theme}_{intensity}_{bg_sound}.mp3"
+
         parts = file.replace('.mp3', '').split('_')
 
         # Extracting attributes
@@ -37,7 +36,6 @@ def convert_files_to_seed_data(meditation_files, ambient_files, meditation_direc
         # Generate the AWS URL for the file
         aws_url = generate_aws_url(file)
 
-        # Using pydub to get the actual duration
         file_path = os.path.join(meditation_directory, file)
         duration = get_duration_of_audio(file_path)
 
@@ -65,7 +63,6 @@ def convert_files_to_seed_data(meditation_files, ambient_files, meditation_direc
 
         current_id += 1
 
-    # Next, process the ambient sounds
     for file in ambient_files:
         # Generate the AWS URL for the file
         aws_url = generate_aws_url(file)

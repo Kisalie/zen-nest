@@ -1,6 +1,10 @@
 import { useEffect } from 'react'
 import { login, register, logout } from './lib/auth'
+import Header from './components/Header'
+import Login from './components/Login'
+import Register from './components/Register'
 import axios from 'axios'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 export default function App() {
   useEffect(() => {
@@ -17,24 +21,26 @@ export default function App() {
   }, [])
 
   return (
-    <main className='bg-sky-200 h-screen'>
 
-      <h1 className="text-4xl font-extrabold">
-        Hello world!
-      </h1>
-      <button
-        onClick={() => login(
-          'kisalie',
-          'pass'
-        )}
-      >Login </button>
-      <button onClick={() => register(
-        'kisalie12312312',
-        'pass',
-        'pass'
-      )}>Register</button>
+    <BrowserRouter>
 
-      <button onClick={logout}>Logout</button>
-    </main>
+      <Header />
+      <Routes>
+        <Route path='/' element={<></>} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
+        {/* <Route path='/recipes' element={<BrowseRecipes />} />
+        <Route path='/recipes/:id' element={<SingleRecipe />} />
+        <Route path='/blogs' element={<Blog />} />
+        <Route path='/recipes/type/:type' element={<Filter />} />
+        <Route path='/blogs/:id' element={<SingleBlog />} />
+        <Route path='/user/:addedBy/create' element={<RecipeForm />} />
+        <Route path='/user/:addedBy/:id' element={<RecipeForm />} />
+        <Route path='/user/:addedBy' element={<Profile />} />
+        <Route path="*" element={<NotFound />} /> */}
+      </Routes>
+
+    </BrowserRouter>
+
   )
 }
