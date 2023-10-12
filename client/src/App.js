@@ -33,15 +33,6 @@ export default function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/session' element={<SessionStartPage />} />
-        {/* <Route path='/recipes' element={<BrowseRecipes />} />
-        <Route path='/recipes/:id' element={<SingleRecipe />} />
-        <Route path='/blogs' element={<Blog />} />
-        <Route path='/recipes/type/:type' element={<Filter />} />
-        <Route path='/blogs/:id' element={<SingleBlog />} />
-        <Route path='/user/:addedBy/create' element={<RecipeForm />} />
-        <Route path='/user/:addedBy/:id' element={<RecipeForm />} />
-        <Route path='/user/:addedBy' element={<Profile />} />
-        <Route path="*" element={<NotFound />} /> */}
       </Routes>
 
     </BrowserRouter>

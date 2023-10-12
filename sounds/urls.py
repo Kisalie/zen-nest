@@ -1,6 +1,8 @@
-from .views import SoundListView
-from django.urls import path
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views import SoundViewSet
 
-urlpatterns = [
-    path('', SoundListView.as_view())
-]
+router = DefaultRouter()
+router.register(r'', SoundViewSet)
+
+urlpatterns = [path('', include(router.urls)),]

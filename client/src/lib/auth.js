@@ -28,6 +28,7 @@ export const login = async (username, password) => {
       setToken('access-token', response.data.access)
       setToken('refresh-token', response.data.refresh)
       console.log('Successfully logged in!')
+      window.dispatchEvent(new Event('storage'))
       return response.data
     }
   } catch (error) {
@@ -47,7 +48,9 @@ export const register = async (username, password, passwordConfirmations) => {
   }
 }
 
-export const logout = () => {
-  localStorage.removeItem('accessToken')
+export const logout = (setHasToken) => {
+  localStorage.removeItem('access-token')
+  localStorage.removeItem('refresh-token')
+  setHasToken(false)
   console.log('Logged out!')
 }

@@ -4,9 +4,12 @@ import { useState } from 'react'
 
 // Insert react tabs:
 export default function SessionStartPage() {
-  const [isInSession, setIsInSession] = useState(false)
-  const [sessionData, setSessionData] = useState({})
-
+  const [isInSession, setIsInSession] = useState(true) // after testing change this back to false 
+  const [sessionData, setSessionData] = useState({ // after testing change this back to {}
+    'id': 18,
+    'duration_in_minutes': 0,
+    'sound': 19,
+  })
 
   if (isInSession) return <>Player To Go Here!</>
 
@@ -14,5 +17,4 @@ export default function SessionStartPage() {
   return (<>
     <GuidedMeditationForm setIsInSession={setIsInSession} setSessionData={setSessionData} />
   </>)
-
 }
