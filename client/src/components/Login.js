@@ -4,9 +4,11 @@ import { login } from '../lib/auth'
 export default function Login() {
 
   const [formData, setFormData] = useState({
-    email: '',
+    username: '',
     password: '',
   })
+
+  console.log(formData)
 
   const [error, setError] = useState(null)
 
@@ -18,7 +20,7 @@ export default function Login() {
     e.preventDefault()
     setError(null)
     try {
-      const response = await login(formData.email, formData.password)
+      const response = await login(formData.username, formData.password)
       if (response) {
         console.log('Login successful!')
         // TODO: Redirect to dashboard or main page
@@ -46,19 +48,19 @@ export default function Login() {
           <div className="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
-                <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
-                  Email address
+                <label htmlFor="username" className="block text-sm font-medium leading-6 text-gray-900">
+                  Username
                 </label>
                 <div className="mt-2">
                   <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    autoComplete="email"
+                    id="username"
+                    name="username"
+                    type="username"
+                    autoComplete="username"
                     required
-                    value={formData.email}
+                    value={formData.username}
                     onChange={handleChange}
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full px-2.5 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>

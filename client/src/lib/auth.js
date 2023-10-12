@@ -32,6 +32,7 @@ export const login = async (username, password) => {
     }
   } catch (error) {
     console.error('Error logging in:', error.response ? error.response.data : error.message)
+    throw new Error('Error logging in:', error.response ? error.response.data : error.message)
   }
 }
 
@@ -42,6 +43,7 @@ export const register = async (username, password, passwordConfirmations) => {
     return response.data
   } catch (error) {
     console.error('Error registering:', error.response ? error.response.data : error.message)
+    throw new Error('Error registering:', error.response ? error.response.data : error.message)
   }
 }
 

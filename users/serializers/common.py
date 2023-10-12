@@ -1,13 +1,15 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 
+User = get_user_model()
+
 
 class RegistrationSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
     password_confirmations = serializers.CharField(write_only=True)
 
     class Meta:
-        model = get_user_model()
+        model = User
         fields = ('id', 'username', 'email',
                   'password', 'password_confirmations')
 
@@ -19,3 +21,7 @@ class RegistrationSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError('Passwords do not match.')
 
         return data
+
+    def create(self, validated_data):
+        user = User.objects.create_user(**validated_data)
+        return user

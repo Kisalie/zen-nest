@@ -3,6 +3,7 @@ import { register } from '../lib/auth'
 
 export default function Register() {
   const [formData, setFormData] = useState({
+    username: '',
     email: '',
     password: '',
     passwordConfirmations: '',
@@ -24,7 +25,7 @@ export default function Register() {
     }
 
     try {
-      await register(formData.email, formData.password, formData.passwordConfirmations)
+      await register(formData.username, formData.password, formData.passwordConfirmations)
       console.log('Registration successful!')
       // TODO: Redirect to login or main page
     } catch (err) {
@@ -48,6 +49,7 @@ export default function Register() {
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
           <div className="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
+            <div className='py-4'>{error}</div>
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
                 <label htmlFor="username" className="block text-sm font-medium leading-6 text-gray-900">
@@ -62,7 +64,7 @@ export default function Register() {
                     required
                     value={formData.username}
                     onChange={handleChange}
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 py-1.5 px-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>

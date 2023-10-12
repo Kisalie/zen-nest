@@ -23,5 +23,5 @@ urlpatterns = [
     path('api/sounds/', include('sounds.urls')),
     path('api/auth/', include('users.urls')),
     path('api/meditation-sessions/', include('meditation_sessions.urls')),
-    path('api/guided-mediations/', include('guided_meditations.urls'))
+    path('api/guided-meditations/', include('guided_meditations.urls'))
 ]
