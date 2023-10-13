@@ -114,7 +114,7 @@ export default function Header() {
                               href="#"
                               className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                             >
-                              Your Profile
+                              My Sessions
                             </a>
                           )}
                         </Menu.Item>
@@ -147,7 +147,7 @@ export default function Header() {
                 href="#"
                 className="block border-l-4 py-2 pl-3 pr-4 text-base font-medium text-indigo-700"
               >
-                Dashboard
+                My Sessions
               </Disclosure.Button>
               <Disclosure.Button
                 as="a"
