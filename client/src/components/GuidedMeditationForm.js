@@ -34,7 +34,6 @@ const GuidedMeditationForm = ({
     if (!chosenMeditation) return
     // console.log(chosenMeditation)
 
-    // Construct the payload for the API
     const payload = {
       sound: chosenMeditation.sound.id,
       duration_in_minutes: 0,

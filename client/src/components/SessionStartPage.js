@@ -1,11 +1,13 @@
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import GuidedMeditationForm from './GuidedMeditationForm'
+import SelfGuidedForm from './SelfGuidedForm'
 import 'react-tabs/style/react-tabs.scss'
 import { useState } from 'react'
 import AudioPlayer from './AudioPlayer'
 
 // Insert react tabs:
 export default function SessionStartPage() {
+  // 1. Meditation sessions --> 2. redirect here with query params --> 3. Check here for query params and if so set state.
   const [isInSession, setIsInSession] = useState(false)
   const [sessionData, setSessionData] = useState({})
 
@@ -26,7 +28,7 @@ export default function SessionStartPage() {
       </TabPanel>
       <TabPanel >
         <div className='py-8 pl-4 sm:py-16'>
-          Self-Guided Form!
+          <SelfGuidedForm setIsInSession={setIsInSession} setSessionData={setSessionData} />
         </div>
       </TabPanel>
     </Tabs>

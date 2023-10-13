@@ -8,7 +8,7 @@ const SelfGuidedForm = ({
 }) => {
   const [selectedSound, setSelectedSound] = useState('')
   const [sounds, setSounds] = useState([])
-
+  console.log(sounds)
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -27,12 +27,12 @@ const SelfGuidedForm = ({
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const chosenSound = sounds.find(sound => sound.pk === parseInt(selectedSound))
+    const chosenSound = sounds.find(sound => sound.id === parseInt(selectedSound))
     if (!chosenSound) return
 
     const payload = {
-      sound: chosenSound.pk,
-      duration_in_minutes: 0,  // Keeping this 0 as in your previous form, modify as needed
+      sound: chosenSound.id,
+      duration_in_minutes: 0,
     }
 
     try {
@@ -63,8 +63,8 @@ const SelfGuidedForm = ({
           >
             <option value="">Select a sound</option>
             {sounds.map(sound => (
-              <option key={sound.pk} value={sound.pk}>
-                {`${sound.fields.theme_or_sound_name} - ${Math.floor(sound.fields.duration)} minutes`}
+              <option key={sound.id} value={sound.id}>
+                {`${sound.theme_or_sound_name} - ${Math.floor(sound.duration)} minutes`}
               </option>
             ))}
           </select>
