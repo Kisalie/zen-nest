@@ -13,7 +13,7 @@ const SelfGuidedForm = ({
     const fetchData = async () => {
       try {
         const token = getToken('access-token')
-        const response = await axios.get('/api/sounds/', {  // Assuming the endpoint for sounds is '/api/sounds/'
+        const response = await axios.get('/api/sounds/', {
           headers: { Authorization: `Bearer ${token}` },
         })
         const availableSounds = response.data.filter(sound => !sound.is_guided)
