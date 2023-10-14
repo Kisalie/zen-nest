@@ -4,8 +4,7 @@ import Header from './components/Header'
 import Login from './components/Login'
 import Register from './components/Register'
 import SessionStartPage from './components/SessionStartPage'
-import SelfGuidedForm from './components/SelfGuidedForm'
-import GuidedMeditationForm from './components/GuidedMeditationForm'
+import MeditationSessions from './components/MeditationSessions'
 import axios from 'axios'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
@@ -33,6 +32,8 @@ export default function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/session' element={<SessionStartPage />} />
+        <Route path='/meditation-sessions' element={<MeditationSessions />} />
+
       </Routes>
 
     </BrowserRouter>

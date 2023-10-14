@@ -6,5 +6,12 @@ from sounds.serializers.common import SoundSerializer
 class MeditationSessionSerializer(serializers.ModelSerializer):
     class Meta:
         model = MeditationSession
-        # Exclude user from serialization and deserialization
+        exclude = ('user',)
+
+
+class GetMeditationSessionsSerializer(serializers.ModelSerializer):
+    sound = SoundSerializer()
+
+    class Meta:
+        model = MeditationSession
         exclude = ('user',)
