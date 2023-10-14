@@ -5,6 +5,7 @@ import { getToken } from '../lib/auth'
 const MeditationAudioPlayer = ({ sessionData, setIsInSession }) => {
   const [soundURL, setSoundURL] = useState(null)
   const [isGuided, setIsGuided] = useState(true)
+  const [totalListenedDuration, setTotalListenedDuration] = useState(0)
   const audioRef = useRef(null)
 
   useEffect(() => {
@@ -51,25 +52,35 @@ const MeditationAudioPlayer = ({ sessionData, setIsInSession }) => {
 
   const handleStop = () => {
     if (audioRef.current) {
-      const listenedDuration = audioRef.current.currentTime  // Total amount played
+      const listenedDuration = audioRef.current.currentTime
       audioRef.current.pause()
       audioRef.current.currentTime = 0
-      updateSessionDuration(listenedDuration)
+      if (!isGuided) {
+        updateSessionDuration(listenedDuration + totalListenedDuration) // Add the total duration for self-guided sessions
+      } else {
+        updateSessionDuration(listenedDuration)
+      }
       setIsInSession(false)
     }
   }
 
   const handleEnd = () => {
     if (audioRef.current) {
-      const fullDuration = audioRef.current.duration // Total length
-      updateSessionDuration(fullDuration)
-      setIsInSession(false)
+      if (!isGuided) {
+        setTotalListenedDuration(prevDuration => prevDuration + audioRef.current.duration) // Update total listened duration
+        audioRef.current.currentTime = 0 // Setting the audio file back to 0 sedcs
+        audioRef.current.play() // Re-playing the audio file
+      } else {
+        const fullDuration = audioRef.current.duration
+        updateSessionDuration(fullDuration)
+        setIsInSession(false)
+      }
     }
   }
 
+
   return (
     <div>
-      {/* TODO  */}
       {soundURL && (
         <div>
           <audio ref={audioRef} autoPlay={true} src={soundURL} controls onEnded={handleEnd} />

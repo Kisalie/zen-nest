@@ -64,7 +64,7 @@ const SelfGuidedForm = ({
             <option value="">Select a sound</option>
             {sounds.map(sound => (
               <option key={sound.id} value={sound.id}>
-                {`${sound.theme_or_sound_name} - ${Math.floor(sound.duration)} minutes`}
+                {sound.theme_or_sound_name}
               </option>
             ))}
           </select>
