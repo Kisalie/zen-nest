@@ -56,9 +56,11 @@ export default function MeditationSessions() {
         <div className="px-4 sm:px-6 lg:px-8">
           <div className="sm:flex sm:items-center">
             <div className="sm:flex-auto">
-              <h1 className="text-base font-semibold leading-6 text-gray-900">My Meditation Sessions</h1>
+              <h1 className="text-base font-semibold leading-6 text-sky-900">My Meditation Sessions</h1>
               <p className="mt-2 text-sm text-gray-700">
-                A list of all the meditations sessions in your account that you have created.
+                {
+                  sessions.length > 0 ? <>You have currently completed {sessions.length} sessions. Well done!</> : <>You currently do not have any meditation sessions. You should create one! </>
+                }
               </p>
             </div>
             <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
@@ -67,22 +69,25 @@ export default function MeditationSessions() {
                 onClick={() => {
                   navigate('/session')
                 }}
-                className="block rounded-md bg-blue-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="w-full flex justify-center rounded-md bg-sky-600 px-4 py-2 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500 transition duration-200"
               >
                 Create Session
               </button>
             </div>
           </div>
+
+
+          {/* TODO - Conditionally render the table if there are more than 0 sessions.length */}
           <div className="mt-8 flow-root">
             <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
               <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
                 <table className="min-w-full divide-y divide-gray-300">
                   <thead>
                     <tr>
-                      <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">
+                      <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-sky-900 sm:pl-0">
                         Theme
                       </th>
-                      <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                      <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-sky-900">
                         Duration In Minutes
                       </th>
                       <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-0">
@@ -98,7 +103,7 @@ export default function MeditationSessions() {
                         </td>
                         <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{parseFloat(session.duration_in_minutes).toFixed(2)}</td>
                         <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
-                          <a href="#" onClick={() => handleEdit(session.id)} className="text-indigo-600 hover:text-indigo-900">
+                          <a href="#" onClick={() => handleEdit(session.id)} className="text-sky-900 hover:text-sky-700">
                             Edit
                           </a>
                           <span> | </span>

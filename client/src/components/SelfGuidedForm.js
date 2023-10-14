@@ -53,7 +53,7 @@ const SelfGuidedForm = ({
   }
 
   return (
-    <div>
+    <div className={`p-4 sm:p-8 max-w-lg mx-auto ${isLoading ? '' : 'bg-blue-50 shadow-md rounded-md'} `}>
       {isLoading ? (
         // Render the spinner when isLoading is true
         <Spinner loading={isLoading} color="#005ec2" size={50} />

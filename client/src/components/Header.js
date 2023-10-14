@@ -62,25 +62,25 @@ export default function Header() {
                     hasToken ? <>
                       <Link
                         to="/session"
-                        className={'inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-900'}
+                        className={'inline-flex items-center px-1 pt-1 text-sm font-medium text-sky-900'}
                       >
                         Create Session
                       </Link>
                       <Link
                         to="/meditation-sessions"
-                        className={'inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-900'}
+                        className={'inline-flex items-center px-1 pt-1 text-sm font-medium text-sky-900'}
                       >
                         My Sessions
                       </Link>
                     </> : <>
                       <Link to="/login"
-                        className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-900"
+                        className="inline-flex items-center px-1 pt-1 text-sm font-medium text-sky-900"
                       >
                         Login
                       </Link>
 
                       <Link to="/register"
-                        className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-900"
+                        className="inline-flex items-center px-1 pt-1 text-sm font-medium text-sky-900"
                       >
                         Register
                       </Link>
@@ -124,7 +124,7 @@ export default function Header() {
                           {({ active }) => (
                             <a
                               href="#"
-                              className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                              className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-sky-900')}
                               onClick={() => {
                                 logout(setHasToken)
                                 navigate('/login')
@@ -147,14 +147,14 @@ export default function Header() {
               <Disclosure.Button
                 as="div"
                 onClick={() => navigate('/session')}
-                className="block border-l-4 py-2 pl-3 pr-4 text-base font-medium text-indigo-700"
+                className="block border-l-4 py-2 pl-3 pr-4 text-base font-medium text-sky-900"
               >
                 Create Session
               </Disclosure.Button>
               <Disclosure.Button
                 as="div"
                 onClick={() => navigate('/meditation-sessions')}
-                className="block border-l-4 py-2 pl-3 pr-4 text-base font-medium text-indigo-700"
+                className="block border-l-4 py-2 pl-3 pr-4 text-base font-medium text-sky-900"
               >
                 My Sessions
               </Disclosure.Button>
