@@ -2,7 +2,7 @@ import { Fragment, useState, useEffect } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { logout } from '../lib/auth'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -30,13 +30,11 @@ export default function Header() {
     }
   }, [])
 
-
-
   return (
     <Disclosure as="nav" className="bg-white shadow">
       {({ open }) => (
         <>
-          <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+          <div className="mx-auto px-2 sm:px-6 lg:px-8">
             <div className="relative flex h-16 justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button */}
@@ -60,18 +58,35 @@ export default function Header() {
                 </div>
                 <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
 
-                  <a
-                    href="/login"
-                    className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-900"
-                  >
-                    Login
-                  </a>
-                  <a
-                    href="/register"
-                    className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-900"
-                  >
-                    Register
-                  </a>
+                  {
+                    hasToken ? <>
+                      <Link
+                        to="/session"
+                        className={'inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-900'}
+                      >
+                        Create Session
+                      </Link>
+                      <Link
+                        to="/meditation-sessions"
+                        className={'inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-900'}
+                      >
+                        My Sessions
+                      </Link>
+                    </> : <>
+                      <Link to="/login"
+                        className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-900"
+                      >
+                        Login
+                      </Link>
+
+                      <Link to="/register"
+                        className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-900"
+                      >
+                        Register
+                      </Link>
+                    </>
+                  }
+
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
@@ -79,9 +94,6 @@ export default function Header() {
                   type="button"
                   className="relative rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                 >
-                  <span className="absolute -inset-1.5" />
-                  <span className="sr-only">View notifications</span>
-                  {/* <BellIcon className="h-6 w-6" aria-hidden="true" /> */}
                 </button>
 
                 {/* Profile dropdown */}
@@ -111,31 +123,11 @@ export default function Header() {
                         <Menu.Item>
                           {({ active }) => (
                             <a
-                              href="/session"
-                              className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                            >
-                              Create Session
-                            </a>
-                          )}
-                        </Menu.Item>
-                        <Menu.Item>
-                          {({ active }) => (
-                            <a
-                              href="/meditation-sessions"
-                              className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                            >
-                              My Sessions
-                            </a>
-                          )}
-                        </Menu.Item>
-                        <Menu.Item>
-                          {({ active }) => (
-                            <a
                               href="#"
                               className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                               onClick={() => {
                                 logout(setHasToken)
-                                navigate('/')
+                                navigate('/login')
                               }}
                             >
                               Logout
@@ -153,33 +145,38 @@ export default function Header() {
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 pb-4 pt-2">
               <Disclosure.Button
-                as="a"
-                href="/session"
+                as="div"
+                onClick={() => navigate('/session')}
                 className="block border-l-4 py-2 pl-3 pr-4 text-base font-medium text-indigo-700"
               >
                 Create Session
               </Disclosure.Button>
               <Disclosure.Button
-                as="a"
-                href="/meditation-sessions"
+                as="div"
+                onClick={() => navigate('/meditation-sessions')}
                 className="block border-l-4 py-2 pl-3 pr-4 text-base font-medium text-indigo-700"
               >
                 My Sessions
               </Disclosure.Button>
-              <Disclosure.Button
-                as="a"
-                href="/login"
-                className="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
-              >
-                Login
-              </Disclosure.Button>
-              <Disclosure.Button
-                as="a"
-                href="/register"
-                className="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
-              >
-                Register
-              </Disclosure.Button>
+              {
+                hasToken ? <></> : <>
+                  <Disclosure.Button
+                    as="div"
+                    onClick={() => navigate('/login')}
+                    className="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 "
+                  >
+                    Login
+                  </Disclosure.Button>
+                  <Disclosure.Button
+                    as="div"
+                    onClick={() => navigate('/register')}
+                    className="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
+                  >
+                    Register
+                  </Disclosure.Button></>
+              }
+
+
             </div>
           </Disclosure.Panel>
         </>

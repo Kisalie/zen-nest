@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { register } from '../lib/auth'
+import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 export default function Register() {
   const [formData, setFormData] = useState({
@@ -8,7 +10,7 @@ export default function Register() {
     password: '',
     passwordConfirmations: '',
   })
-
+  const navigate = useNavigate()
   const [error, setError] = useState(null)
 
   const handleChange = (e) => {
@@ -27,7 +29,7 @@ export default function Register() {
     try {
       await register(formData.username, formData.password, formData.passwordConfirmations)
       console.log('Registration successful!')
-      // TODO: Redirect to login or main page
+      navigate('/login')
     } catch (err) {
       setError('Error registering. Please check your inputs and try again.')
     }
@@ -35,14 +37,11 @@ export default function Register() {
 
   return (
     <>
-      <div className="flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8">
+      <div className="flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8 bg-blue-100 min-h-screen">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           <img
-            className="mx-auto h-10 w-auto"
-            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-            alt="Your Company"
           />
-          <h2 className="mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+          <h2 className="mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-sky-900">
             Register for an account
           </h2>
         </div>
@@ -52,7 +51,7 @@ export default function Register() {
             <div className='py-4'>{error}</div>
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
-                <label htmlFor="username" className="block text-sm font-medium leading-6 text-gray-900">
+                <label htmlFor="username" className="block text-sm font-medium leading-6 text-sky-900">
                   Username
                 </label>
                 <div className="mt-2">
@@ -69,7 +68,7 @@ export default function Register() {
                 </div>
               </div>
               <div>
-                <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
+                <label htmlFor="email" className="block text-sm font-medium leading-6 text-sky-900">
                   Email address
                 </label>
                 <div className="mt-2">
@@ -87,7 +86,7 @@ export default function Register() {
               </div>
 
               <div>
-                <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
+                <label htmlFor="password" className="block text-sm font-medium leading-6 text-sky-900">
                   Password
                 </label>
                 <div className="mt-2">
@@ -106,7 +105,7 @@ export default function Register() {
 
               <div>
 
-                <label htmlFor="passwordConfirmations" className="block text-sm font-medium leading-6 text-gray-900">
+                <label htmlFor="passwordConfirmations" className="block text-sm font-medium leading-6 text-sky-900">
                   Confirm Password
                 </label>
                 <div className="mt-2">
@@ -129,7 +128,7 @@ export default function Register() {
               <div>
                 <button
                   type="submit"
-                  className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  className="flex w-full justify-center rounded-md bg-sky-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
                   Register
                 </button>
@@ -138,9 +137,9 @@ export default function Register() {
               </div>
 
               <div className="text-sm leading-6">
-                <a href="/login" className="font-semibold text-indigo-600 hover:text-indigo-500">
+                <Link className="font-semibold text-sky-500 hover:text-sky-400" to='/login'>
                   Already Registered?
-                </a>
+                </Link>
               </div>
             </form>
 
