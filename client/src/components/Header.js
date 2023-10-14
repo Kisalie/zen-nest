@@ -111,7 +111,17 @@ export default function Header() {
                         <Menu.Item>
                           {({ active }) => (
                             <a
-                              href="#"
+                              href="/session"
+                              className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                            >
+                              Create Session
+                            </a>
+                          )}
+                        </Menu.Item>
+                        <Menu.Item>
+                          {({ active }) => (
+                            <a
+                              href="/meditation-sessions"
                               className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                             >
                               My Sessions
@@ -144,7 +154,14 @@ export default function Header() {
             <div className="space-y-1 pb-4 pt-2">
               <Disclosure.Button
                 as="a"
-                href="#"
+                href="/session"
+                className="block border-l-4 py-2 pl-3 pr-4 text-base font-medium text-indigo-700"
+              >
+                Create Session
+              </Disclosure.Button>
+              <Disclosure.Button
+                as="a"
+                href="/meditation-sessions"
                 className="block border-l-4 py-2 pl-3 pr-4 text-base font-medium text-indigo-700"
               >
                 My Sessions
