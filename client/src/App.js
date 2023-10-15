@@ -21,7 +21,7 @@ export default function App() {
         <Route path='/register' element={<Register />} />
         <Route path='/session' element={<SessionStartPage />} />
         <Route path='/meditation-sessions' element={<MeditationSessions />} />
-        <Route path='/all-meditations' element={<AllMeditations />} />
+        <Route path='/meditations' element={<AllMeditations />} />
 
       </Routes>
       <Footer />
