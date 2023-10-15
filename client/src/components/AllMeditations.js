@@ -30,10 +30,11 @@ export default function AllMeditations() {
 
   if (isLoading) {
     return (
-      <div className="flex justify-center items-center h-screen">
+      <div className='min-h-screen'>
         <Spinner loading={true} />
       </div>
     )
+
   }
 
 
@@ -45,7 +46,7 @@ export default function AllMeditations() {
           <Link
             // className={Math.random()}
             //  className={coloursObject[meditation.theme_or_sound_name]}
-            to={'/session'}
+            to={`/session?guidedMeditationID=${meditation.id}`}
             key={meditation.id} >
             <div className="border rounded-lg shadow-md hover:shadow-xl transition duration-300">
               <div className="p-4">

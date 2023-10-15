@@ -57,9 +57,7 @@ const GuidedMeditationForm = ({
   return (
     <div className={`p-4 sm:p-8 max-w-lg mx-auto ${isLoading ? '' : 'bg-blue-50 shadow-md rounded-md'} `}>
       {isLoading ? (
-        <div className="flex justify-center items-center min-h-[200px]">
-          <Spinner loading={isLoading} color="#005ec2" size={50} />
-        </div>
+        <Spinner loading={true} color="#005ec2" size={50} />
       ) : (
         <form onSubmit={handleSubmit}>
           <div className="mb-4">

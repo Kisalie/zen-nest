@@ -8,10 +8,7 @@ import AllMeditations from './components/AllMeditations'
 import Footer from './components/Footer'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
-
 export default function App() {
-
-
   return (
     <BrowserRouter>
       <Header />
@@ -22,10 +19,8 @@ export default function App() {
         <Route path='/session' element={<SessionStartPage />} />
         <Route path='/meditation-sessions' element={<MeditationSessions />} />
         <Route path='/meditations' element={<AllMeditations />} />
-
       </Routes>
       <Footer />
     </BrowserRouter>
-
   )
 }

@@ -2,20 +2,57 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import GuidedMeditationForm from './GuidedMeditationForm'
 import SelfGuidedForm from './SelfGuidedForm'
 import 'react-tabs/style/react-tabs.scss'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import AudioPlayer from './AudioPlayer'
 import Layout from './Layout'
+import { getToken } from '../lib/auth'
+import axios from 'axios'
+import { useSearchParams } from 'react-router-dom'
+import Spinner from './Spinner'
 
-// Insert react tabs:
 export default function SessionStartPage() {
-  // 1. Meditation sessions --> 2. redirect here with query params --> 3. Check here for query params and if so set state.
   const [isInSession, setIsInSession] = useState(false)
   const [sessionData, setSessionData] = useState({})
+  const [searchParams, setSearchParams] = useSearchParams()
+  const guidedMeditationID = searchParams.get('guidedMeditationID')
 
-  // Add a query parameter for guidedMeditationID=2, if there is one do a useEffect and create a meditation session using:
-  // 1. Get the guided meditation
-  // 2. Get the sound id from that
-  // 3. Create the session --> update isInSession and sessionData
+  useEffect(() => {
+    if (guidedMeditationID) {
+      const fetchGuidedMeditation = async () => {
+        try {
+          const { data } = await axios.get(`/api/guided-meditations/${parseInt(guidedMeditationID)}/`)
+          const token = getToken('access-token')
+
+          if (data && data.sound) {
+            const payload = {
+              sound: data.sound.id,
+              duration_in_minutes: 0,
+            }
+
+            const sessionResponse = await axios.post('/api/meditation-sessions/', payload, {
+              headers: { Authorization: `Bearer ${token}` },
+            })
+            const newSessionData = sessionResponse.data
+            if (newSessionData) {
+              setIsInSession(true)
+              setSessionData(newSessionData)
+            }
+          }
+        } catch (error) {
+          console.error('Error creating meditation session:', error)
+        }
+      }
+      fetchGuidedMeditation()
+    }
+  }, [guidedMeditationID])
+
+  if (guidedMeditationID && !isInSession) {
+    return (
+      <Layout>
+        <Spinner loading={true} color="#005ec2" size={50} />
+      </Layout>
+    )
+  }
 
   if (isInSession) {
     return (
@@ -24,8 +61,6 @@ export default function SessionStartPage() {
       </Layout>
     )
   }
-
-
 
   return (
     < Layout>
@@ -48,7 +83,6 @@ export default function SessionStartPage() {
         </TabPanel>
       </Tabs>
     </Layout>
-
   )
 
 }

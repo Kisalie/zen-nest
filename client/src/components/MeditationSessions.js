@@ -60,11 +60,9 @@ export default function MeditationSessions() {
 
       <Layout>
         <EditModal open={open} setOpen={setOpen} singleSession={singleSession} />
-
-
         {isLoading ? (
           <div className='flex justify-center'>
-            <Spinner loading={isLoading} color="#005ec2" size={50} />
+            <Spinner loading={true} color="#005ec2" size={50} />
           </div>
 
         ) : (

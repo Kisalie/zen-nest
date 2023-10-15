@@ -55,7 +55,7 @@ const SelfGuidedForm = ({
   return (
     <div className={`p-4 sm:p-8 max-w-lg mx-auto ${isLoading ? '' : 'bg-blue-50 shadow-md rounded-md'} `}>
       {isLoading ? (
-        <Spinner loading={isLoading} color="#005ec2" size={50} />
+        <Spinner loading={true} color="#005ec2" size={50} />
       ) : (
         <form onSubmit={handleSubmit}>
           <div>
