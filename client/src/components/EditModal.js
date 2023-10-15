@@ -61,11 +61,11 @@ export default function EditModal({ open, setOpen, singleSession }) {
                     <XMarkIcon className="h-6 w-6" aria-hidden="true" />
                   </button>
                 </div>
-                <div className="sm:flex sm:items-start">
-                  <Dialog.Title as="h3" className="text-base font-semibold leading-6 text-gray-900">
-                    Update Your Session
-                  </Dialog.Title>
-                  <div className="mt-2">
+                <Dialog.Title as="h3" className="text-lg font-semibold leading-6 text-gray-900 mb-4 sm:mb-0">
+                  Update Your Session
+                </Dialog.Title>
+                <div className="sm:flex sm:items-start sm:space-x-4">
+                  <div>
                     <label htmlFor="duration" className="block text-sm font-medium text-gray-700">
                       Duration (in minutes)
                     </label>
@@ -78,23 +78,23 @@ export default function EditModal({ open, setOpen, singleSession }) {
                       onChange={(e) => {
                         if (!e.target.value) return setDuration(e.target.value)
                         setDuration(parseFloat(e.target.value))
-                      }
-                      }
-                      className="mt-1 p-2 w-full rounded-md border-gray-300"
+                      }}
+                      className="mt-2 p-3 w-full rounded-md border border-gray-300 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
                     />
                   </div>
                 </div>
-                <div className="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
+
+                <div className="mt-5 sm:mt-6 sm:flex sm:flex-row-reverse sm:space-x-reverse sm:space-x-4">
                   <button
                     type='submit'
-                    className="inline-flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 sm:ml-3 sm:w-auto"
+                    className="inline-flex w-full justify-center rounded-md bg-sky-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-sky-500 focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 sm:ml-3 sm:w-auto"
                     onClick={handleEdit}
                   >
                     Update
                   </button>
                   <button
                     type="button"
-                    className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+                    className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-4 py-2 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 sm:mt-0 sm:w-auto"
                     onClick={() => setOpen(false)}
                   >
                     Cancel
