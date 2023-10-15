@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { login } from '../lib/auth'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
+import toast from 'react-hot-toast'
 
 export default function Login() {
 
@@ -24,11 +25,12 @@ export default function Login() {
     try {
       const response = await login(formData.username, formData.password)
       if (response) {
-        console.log('Login successful!')
+        toast.success('Login successful!')
         navigate('/session')
       }
     } catch (err) {
       setError('Error logging in. Please check your credentials and try again.')
+      toast.error('Error logging in. Please check your credentials and try again.')
     }
   }
 

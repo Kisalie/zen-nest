@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { getToken } from '../lib/auth'
 import Spinner from './Spinner'
 import axios from 'axios'
+import toast from 'react-hot-toast'
 
 const GuidedMeditationForm = ({
   setIsInSession,
@@ -24,6 +25,7 @@ const GuidedMeditationForm = ({
         setIsLoading(false)
       } catch (error) {
         console.error('Error fetching data:', error)
+        toast.error('Error fetching data:')
         setIsLoading(false)
       }
     }
@@ -34,7 +36,6 @@ const GuidedMeditationForm = ({
     e.preventDefault()
     const chosenMeditation = meditations.find(meditation => meditation.id === parseInt(selectedMeditation))
     if (!chosenMeditation) return
-    // console.log(chosenMeditation)
 
     const payload = {
       sound: chosenMeditation.sound.id,
@@ -51,6 +52,7 @@ const GuidedMeditationForm = ({
       console.log('Meditation session created successfully!')
     } catch (error) {
       console.error('Error creating meditation session:', error)
+      toast.error('Error creating meditation session:')
     }
   }
 

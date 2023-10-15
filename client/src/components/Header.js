@@ -3,6 +3,7 @@ import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { logout } from '../lib/auth'
 import { useNavigate, Link } from 'react-router-dom'
+import toast from 'react-hot-toast'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -72,6 +73,12 @@ export default function Header() {
                       >
                         My Sessions
                       </Link>
+                      <Link
+                        to="/meditations"
+                        className={'inline-flex items-center px-1 pt-1 text-sm font-medium text-sky-900'}
+                      >
+                        Guided Meditations
+                      </Link>
                     </> : <>
                       <Link to="/login"
                         className="inline-flex items-center px-1 pt-1 text-sm font-medium text-sky-900"
@@ -127,6 +134,7 @@ export default function Header() {
                               className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-sky-900')}
                               onClick={() => {
                                 logout(setHasToken)
+                                toast.success('You\'ve successfully logged out!')
                                 navigate('/login')
                               }}
                             >
@@ -157,6 +165,13 @@ export default function Header() {
                 className="block border-l-4 py-2 pl-3 pr-4 text-base font-medium text-sky-900"
               >
                 My Sessions
+              </Disclosure.Button>
+              <Disclosure.Button
+                as="div"
+                onClick={() => navigate('/meditations')}
+                className="block border-l-4 py-2 pl-3 pr-4 text-base font-medium text-sky-900"
+              >
+                Guided Meditations
               </Disclosure.Button>
               {
                 hasToken ? <></> : <>

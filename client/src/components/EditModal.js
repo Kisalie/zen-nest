@@ -3,6 +3,7 @@ import { getToken } from '../lib/auth'
 import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
+import toast from 'react-hot-toast'
 
 export default function EditModal({ open, setOpen, singleSession }) {
   const [duration, setDuration] = useState(0)
@@ -16,13 +17,14 @@ export default function EditModal({ open, setOpen, singleSession }) {
       await axios.patch(`/api/meditation-sessions/${singleSession.id}/`, payload, {
         headers: { Authorization: `Bearer ${token}` },
       })
+      toast.success('Successfully updated your session')
       setOpen(false)
       setDuration(0)
     } catch (error) {
       console.error('Error editing session:', error)
+      toast.error('Unable to edit session')
     }
   }
-
 
   return (
     <Transition.Root show={open} as={Fragment}>

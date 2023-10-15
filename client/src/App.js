@@ -6,11 +6,14 @@ import SessionStartPage from './components/SessionStartPage'
 import MeditationSessions from './components/MeditationSessions'
 import AllMeditations from './components/AllMeditations'
 import Footer from './components/Footer'
+import NotFound from './components/NotFoundPage'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import toast, { Toaster } from 'react-hot-toast'
 
 export default function App() {
   return (
     <BrowserRouter>
+      <Toaster />
       <Header />
       <Routes>
         <Route path='/' element={<></>} />
@@ -19,6 +22,8 @@ export default function App() {
         <Route path='/session' element={<SessionStartPage />} />
         <Route path='/meditation-sessions' element={<MeditationSessions />} />
         <Route path='/meditations' element={<AllMeditations />} />
+        <Route path='*' element={<NotFound />} />
+
       </Routes>
       <Footer />
     </BrowserRouter>

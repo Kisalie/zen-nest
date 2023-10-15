@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useState, useEffect, useRef } from 'react'
 import { getToken } from '../lib/auth'
+import toast from 'react-hot-toast'
 
 const MeditationAudioPlayer = ({ sessionData, setIsInSession }) => {
   const [soundURL, setSoundURL] = useState(null)
@@ -21,6 +22,7 @@ const MeditationAudioPlayer = ({ sessionData, setIsInSession }) => {
         setIsGuided(response.data.is_guided)
       } catch (error) {
         console.error('Error fetching sound data:', error)
+        toast.error('Unable to find the sound')
       }
     }
 
@@ -36,19 +38,14 @@ const MeditationAudioPlayer = ({ sessionData, setIsInSession }) => {
     const token = getToken('access-token')
 
     try {
-      console.log()
       const response = await axios.patch(`/api/meditation-sessions/${sessionId}/`,
         { duration_in_minutes: duration },
         { headers: { Authorization: `Bearer ${token}` } }
       )
-
-      if (response.status === 200) {
-        console.log('Session duration updated successfully!')
-      } else {
-        console.error('Failed to update session duration:', response.data)
-      }
+      toast.success('Sucessfully saved your session')
     } catch (error) {
       console.error('Error updating session duration:', error)
+      toast.error('Failed to upload session')
     }
   }
 

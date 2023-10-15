@@ -5,6 +5,7 @@ import EditModal from '../components/EditModal'
 import { useNavigate } from 'react-router-dom'
 import Layout from './Layout'
 import Spinner from './Spinner'
+import toast from 'react-hot-toast'
 
 export default function MeditationSessions() {
 
@@ -26,6 +27,7 @@ export default function MeditationSessions() {
         setIsLoading(false)
       } catch (error) {
         console.error('Error fetching sessions:', error)
+        toast.error('Unable to fetch your previous meditation sessions')
         setIsLoading(false)
       }
     }
@@ -47,24 +49,22 @@ export default function MeditationSessions() {
       })
       // Remove the session from the local state
       const updatedSessions = sessions.filter(session => session.id !== sessionId)
+      toast.success('Session Deleted!')
       setSessions(updatedSessions)
     } catch (error) {
       console.error('Error deleting session:', error)
+      toast.error('Failed to delete your meditation session')
     }
   }
 
-
-
   return (
     <>
-
       <Layout>
         <EditModal open={open} setOpen={setOpen} singleSession={singleSession} />
         {isLoading ? (
           <div className='flex justify-center'>
             <Spinner loading={true} color="#005ec2" size={50} />
           </div>
-
         ) : (
           <div className="px-4 sm:px-6 lg:px-8">
             <div className="sm:flex sm:items-center">
@@ -88,9 +88,6 @@ export default function MeditationSessions() {
                 </button>
               </div>
             </div>
-
-
-            {/* TODO - Conditionally render the table if there are more than 0 sessions.length */}
             <div className="mt-8 flow-root">
               <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">

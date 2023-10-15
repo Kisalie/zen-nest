@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { register } from '../lib/auth'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
+import toast from 'react-hot-toast'
 
 export default function Register() {
   const [formData, setFormData] = useState({
@@ -23,15 +24,18 @@ export default function Register() {
 
     if (formData.password !== formData.passwordConfirmations) {
       setError('Passwords do not match.')
+      toast.error('Passwords do not match.')
       return
     }
 
     try {
       await register(formData.username, formData.password, formData.passwordConfirmations)
       console.log('Registration successful!')
+      toast.success('You\'ve sucessfully registered! Now, please login')
       navigate('/login')
     } catch (err) {
       setError('Error registering. Please check your inputs and try again.')
+      toast.error('Error registering. Please check your inputs and try again.')
     }
   }
 

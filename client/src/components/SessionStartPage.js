@@ -7,14 +7,17 @@ import AudioPlayer from './AudioPlayer'
 import Layout from './Layout'
 import { getToken } from '../lib/auth'
 import axios from 'axios'
-import { useSearchParams } from 'react-router-dom'
+import { useSearchParams, useNavigate, useLocation } from 'react-router-dom'
 import Spinner from './Spinner'
+import toast from 'react-hot-toast'
 
 export default function SessionStartPage() {
   const [isInSession, setIsInSession] = useState(false)
   const [sessionData, setSessionData] = useState({})
   const [searchParams, setSearchParams] = useSearchParams()
   const guidedMeditationID = searchParams.get('guidedMeditationID')
+  const navigate = useNavigate()
+  const location = useLocation()
 
   useEffect(() => {
     if (guidedMeditationID) {
@@ -23,23 +26,29 @@ export default function SessionStartPage() {
           const { data } = await axios.get(`/api/guided-meditations/${parseInt(guidedMeditationID)}/`)
           const token = getToken('access-token')
 
-          if (data && data.sound) {
-            const payload = {
-              sound: data.sound.id,
-              duration_in_minutes: 0,
-            }
+          if (!data && !data.sound) {
+            toast.error('Unable to find or access the right meditation session.')
+            throw new Error('Unable to find or access the right meditation session.')
+          }
 
-            const sessionResponse = await axios.post('/api/meditation-sessions/', payload, {
-              headers: { Authorization: `Bearer ${token}` },
-            })
-            const newSessionData = sessionResponse.data
-            if (newSessionData) {
-              setIsInSession(true)
-              setSessionData(newSessionData)
-            }
+          const payload = {
+            sound: data.sound.id,
+            duration_in_minutes: 0,
+          }
+
+          const sessionResponse = await axios.post('/api/meditation-sessions/', payload, {
+            headers: { Authorization: `Bearer ${token}` },
+          })
+          const newSessionData = sessionResponse.data
+          if (newSessionData) {
+            setIsInSession(true)
+            setSessionData(newSessionData)
+            // Remove query parameters from the URL:
+            navigate(location.pathname)
           }
         } catch (error) {
           console.error('Error creating meditation session:', error)
+          toast.error('Error creating meditation session:')
         }
       }
       fetchGuidedMeditation()

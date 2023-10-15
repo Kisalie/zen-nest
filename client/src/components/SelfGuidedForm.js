@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import Spinner from './Spinner'
 import { getToken } from '../lib/auth'
+import toast from 'react-hot-toast'
 
 const SelfGuidedForm = ({
   setIsInSession,
@@ -23,6 +24,7 @@ const SelfGuidedForm = ({
         setIsLoading(false)
       } catch (error) {
         console.error('Error fetching sounds:', error)
+        toast.error(error)
         setIsLoading(false)
       }
     }
@@ -49,6 +51,7 @@ const SelfGuidedForm = ({
       console.log('Self-guided session created successfully!')
     } catch (error) {
       console.error('Error creating self-guided session:', error)
+      toast.error('Error creating self-guided session:')
     }
   }
 
