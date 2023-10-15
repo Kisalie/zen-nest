@@ -27,7 +27,7 @@ const MeditationAudioPlayer = ({ sessionData, setIsInSession }) => {
 
 
   const updateSessionDuration = async (listenedDuration) => {
-    if (!audioRef.current || !sessionData.id) return // Ensure we have both audio reference and session data
+    if (!audioRef.current || !sessionData.id) return
 
     const duration = listenedDuration / 60
     const sessionId = sessionData.id
@@ -67,9 +67,9 @@ const MeditationAudioPlayer = ({ sessionData, setIsInSession }) => {
   const handleEnd = () => {
     if (audioRef.current) {
       if (!isGuided) {
-        setTotalListenedDuration(prevDuration => prevDuration + audioRef.current.duration) // Update total listened duration
-        audioRef.current.currentTime = 0 // Setting the audio file back to 0 sedcs
-        audioRef.current.play() // Re-playing the audio file
+        setTotalListenedDuration(prevDuration => prevDuration + audioRef.current.duration)
+        audioRef.current.currentTime = 0
+        audioRef.current.play()
       } else {
         const fullDuration = audioRef.current.duration
         updateSessionDuration(fullDuration)
@@ -80,11 +80,12 @@ const MeditationAudioPlayer = ({ sessionData, setIsInSession }) => {
 
 
   return (
-    <div>
+    <div className="flex items-center justify-center min-h-screen bg-blue-100">
       {soundURL && (
-        <div>
-          <audio ref={audioRef} autoPlay={true} src={soundURL} controls onEnded={handleEnd} />
-          <button onClick={handleStop}>Stop</button>
+        <div className="bg-white p-6 rounded-lg shadow-md flex flex-col items-center space-y-4">
+          <div className="text-blue-700 text-2xl font-semibold mb-4"></div>
+          <audio ref={audioRef} autoPlay={true} src={soundURL} controlsList="nodownload" controls onEnded={handleEnd} />
+          <button className="rounded-md bg-sky-600 hover:bg-sky-500 text-white py-2 px-6 focus:outline-none transition duration-200" onClick={handleStop}>Stop</button>
         </div>
       )}
     </div>

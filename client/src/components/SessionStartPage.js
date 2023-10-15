@@ -12,6 +12,11 @@ export default function SessionStartPage() {
   const [isInSession, setIsInSession] = useState(false)
   const [sessionData, setSessionData] = useState({})
 
+  // Add a query parameter for guidedMeditationID=2, if there is one do a useEffect and create a meditation session using:
+  // 1. Get the guided meditation
+  // 2. Get the sound id from that
+  // 3. Create the session --> update isInSession and sessionData
+
   if (isInSession) {
     return (
       <Layout>
