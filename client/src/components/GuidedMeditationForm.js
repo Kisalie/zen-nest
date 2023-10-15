@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
-import { getToken } from '../lib/auth'
 import Spinner from './Spinner'
-import axios from 'axios'
+import axios from '../lib/axios'
 import toast from 'react-hot-toast'
 
 const GuidedMeditationForm = ({
@@ -15,10 +14,7 @@ const GuidedMeditationForm = ({
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const token = getToken('access-token')
-        const response = await axios.get('/api/guided-meditations/', {
-          headers: { Authorization: `Bearer ${token}` },
-        })
+        const response = await axios.get('/api/guided-meditations/')
         const randomizedData = response.data.sort(() => Math.random() - 0.5)
         const topFifteenResults = randomizedData.slice(0, 15)
         setMeditations(topFifteenResults)
@@ -43,10 +39,7 @@ const GuidedMeditationForm = ({
     }
 
     try {
-      const token = getToken('access-token')
-      const { data } = await axios.post('/api/meditation-sessions/', payload, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
+      const { data } = await axios.post('/api/meditation-sessions/', payload)
       setIsInSession(true)
       setSessionData(data)
       console.log('Meditation session created successfully!')

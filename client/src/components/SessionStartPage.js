@@ -5,8 +5,7 @@ import 'react-tabs/style/react-tabs.scss'
 import { useState, useEffect } from 'react'
 import AudioPlayer from './AudioPlayer'
 import Layout from './Layout'
-import { getToken } from '../lib/auth'
-import axios from 'axios'
+import axios from '../lib/axios'
 import { useSearchParams, useNavigate, useLocation } from 'react-router-dom'
 import Spinner from './Spinner'
 import toast from 'react-hot-toast'
@@ -24,8 +23,6 @@ export default function SessionStartPage() {
       const fetchGuidedMeditation = async () => {
         try {
           const { data } = await axios.get(`/api/guided-meditations/${parseInt(guidedMeditationID)}/`)
-          const token = getToken('access-token')
-
           if (!data && !data.sound) {
             toast.error('Unable to find or access the right meditation session.')
             throw new Error('Unable to find or access the right meditation session.')
@@ -36,9 +33,7 @@ export default function SessionStartPage() {
             duration_in_minutes: 0,
           }
 
-          const sessionResponse = await axios.post('/api/meditation-sessions/', payload, {
-            headers: { Authorization: `Bearer ${token}` },
-          })
+          const sessionResponse = await axios.post('/api/meditation-sessions/', payload)
           const newSessionData = sessionResponse.data
           if (newSessionData) {
             setIsInSession(true)

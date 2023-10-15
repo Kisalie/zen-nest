@@ -8,7 +8,8 @@ import AllMeditations from './components/AllMeditations'
 import Footer from './components/Footer'
 import NotFound from './components/NotFoundPage'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import toast, { Toaster } from 'react-hot-toast'
+import { Toaster } from 'react-hot-toast'
+import HomeRedirect from './components/HomeRedirect'
 
 export default function App() {
   return (
@@ -16,7 +17,7 @@ export default function App() {
       <Toaster />
       <Header />
       <Routes>
-        <Route path='/' element={<></>} />
+        <Route path='/' element={< HomeRedirect />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/session' element={<SessionStartPage />} />

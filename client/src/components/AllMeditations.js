@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
-// import axiosAuth as axios from '../lib/axios'
+import axios from '../lib/axios'
 
 
 import Spinner from './Spinner'

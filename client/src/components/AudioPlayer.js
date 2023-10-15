@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from '../lib/axios'
 import { useState, useEffect, useRef } from 'react'
 import { getToken } from '../lib/auth'
 import toast from 'react-hot-toast'
@@ -13,10 +13,7 @@ const MeditationAudioPlayer = ({ sessionData, setIsInSession }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const token = getToken('access-token')
-        const response = await axios.get(`/api/sounds/${sessionData.sound}/`, {
-          headers: { Authorization: `Bearer ${token}` },
-        })
+        const response = await axios.get(`/api/sounds/${sessionData.sound}/`)
         setSoundTitle(response.data.theme_or_sound_name)
         setSoundURL(response.data.sound_file_location)
         setIsGuided(response.data.is_guided)
@@ -38,10 +35,7 @@ const MeditationAudioPlayer = ({ sessionData, setIsInSession }) => {
     const token = getToken('access-token')
 
     try {
-      const response = await axios.patch(`/api/meditation-sessions/${sessionId}/`,
-        { duration_in_minutes: duration },
-        { headers: { Authorization: `Bearer ${token}` } }
-      )
+      await axios.patch(`/api/meditation-sessions/${sessionId}/`, { duration_in_minutes: duration })
       toast.success('Sucessfully saved your session')
     } catch (error) {
       console.error('Error updating session duration:', error)

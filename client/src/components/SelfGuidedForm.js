@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
+import axios from '../lib/axios'
 import Spinner from './Spinner'
-import { getToken } from '../lib/auth'
 import toast from 'react-hot-toast'
 
 const SelfGuidedForm = ({
@@ -15,10 +14,7 @@ const SelfGuidedForm = ({
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const token = getToken('access-token')
-        const response = await axios.get('/api/sounds/', {
-          headers: { Authorization: `Bearer ${token}` },
-        })
+        const response = await axios.get('/api/sounds/')
         const availableSounds = response.data.filter(sound => !sound.is_guided)
         setSounds(availableSounds)
         setIsLoading(false)
@@ -42,10 +38,7 @@ const SelfGuidedForm = ({
     }
 
     try {
-      const token = getToken('access-token')
-      const { data } = await axios.post('/api/meditation-sessions/', payload, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
+      const { data } = await axios.post('/api/meditation-sessions/', payload)
       setIsInSession(true)
       setSessionData(data)
       console.log('Self-guided session created successfully!')

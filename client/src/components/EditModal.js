@@ -1,5 +1,4 @@
-import axios from 'axios'
-import { getToken } from '../lib/auth'
+import axios from '../lib/axios'
 import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
@@ -10,13 +9,10 @@ export default function EditModal({ open, setOpen, singleSession }) {
 
   const handleEdit = async () => {
     try {
-      const token = getToken('access-token')
       const payload = {
         duration_in_minutes: duration,
       }
-      await axios.patch(`/api/meditation-sessions/${singleSession.id}/`, payload, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
+      await axios.patch(`/api/meditation-sessions/${singleSession.id}/`, payload)
       toast.success('Successfully updated your session')
       setOpen(false)
       setDuration(0)

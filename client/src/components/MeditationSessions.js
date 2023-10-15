@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { getToken } from '../lib/auth'
-import axios from 'axios'
+import axios from '../lib/axios'
 import EditModal from '../components/EditModal'
 import { useNavigate } from 'react-router-dom'
 import Layout from './Layout'
@@ -19,10 +19,7 @@ export default function MeditationSessions() {
 
     const fetchSessions = async () => {
       try {
-        const token = getToken('access-token')
-        const response = await axios.get('/api/meditation-sessions/', {
-          headers: { Authorization: `Bearer ${token}` },
-        })
+        const response = await axios.get('/api/meditation-sessions/')
         setSessions(response.data)
         setIsLoading(false)
       } catch (error) {
@@ -44,9 +41,7 @@ export default function MeditationSessions() {
   const handleDelete = async (sessionId) => {
     try {
       const token = getToken('access-token')
-      await axios.delete(`/api/meditation-sessions/${sessionId}/`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
+      await axios.delete(`/api/meditation-sessions/${sessionId}/`)
       // Remove the session from the local state
       const updatedSessions = sessions.filter(session => session.id !== sessionId)
       toast.success('Session Deleted!')
