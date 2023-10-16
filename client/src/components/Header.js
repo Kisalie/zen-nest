@@ -50,9 +50,9 @@ export default function Header() {
                 </Disclosure.Button>
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                <div className="flex flex-shrink-0 items-center">
+                <div className="flex flex-shrink-0 items-center ">
                   <img
-                    className="h-8 w-auto"
+                    className="h-12 w-auto"
                     src="/images/logo.png"
                     alt="Your Company"
                   />
