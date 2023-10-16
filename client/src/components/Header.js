@@ -4,6 +4,8 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { logout } from '../lib/auth'
 import { useNavigate, Link } from 'react-router-dom'
 import toast from 'react-hot-toast'
+import logo from '../images/logo.png'
+import avatar from '../images/avatar.png'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -53,8 +55,8 @@ export default function Header() {
                 <div className="flex flex-shrink-0 items-center ">
                   <img
                     className="h-12 w-auto"
-                    src="/images/logo.png"
-                    alt="Your Company"
+                    src={logo}
+                    alt="Logo"
                   />
                 </div>
                 <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
@@ -112,8 +114,8 @@ export default function Header() {
                         <span className="sr-only">Open user menu</span>
                         <img
                           className="h-8 w-8 rounded-full"
-                          src="/images/avatar.png"
-                          alt=""
+                          src={avatar}
+                          alt="avatar-image"
                         />
                       </Menu.Button>
                     </div>
