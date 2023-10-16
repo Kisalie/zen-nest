@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'meditation_sessions',
     'guided_meditations',
     'sounds',
-    'users'
+    'users',
 ]
 
 REST_FRAMEWORK = {
